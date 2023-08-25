@@ -1,9 +1,7 @@
 package com.caballerosalas.gltest.gluser;
 
-import com.caballerosalas.gltest.errorhandling.CustomDataNotFoundException;
 import com.caballerosalas.gltest.phone.Phone;
 import com.caballerosalas.gltest.phone.PhoneResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
