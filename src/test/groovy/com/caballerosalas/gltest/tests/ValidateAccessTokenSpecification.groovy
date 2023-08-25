@@ -7,7 +7,7 @@ import io.jsonwebtoken.SignatureAlgorithm
 import org.springframework.test.util.ReflectionTestUtils
 import spock.lang.Specification
 
-class ValidateAccessTokenSpecification extends Specification{
+class ValidateAccessTokenSpecification extends Specification {
     def "should be false with a null token"(){
         given:
         def JwtTokenUtils jwtTokenUtils = new JwtTokenUtils()
@@ -18,8 +18,6 @@ class ValidateAccessTokenSpecification extends Specification{
         then:
         !jwt
     }
-
-
 
     def "should be true with a valid token"(){
         given:

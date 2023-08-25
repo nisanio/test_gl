@@ -34,6 +34,7 @@ class ValidatePasswordSpecification extends Specification {
         then:
         !valid
     }
+
     def "should be false with a password with more than two numbers"(){
         given:
         def String password = "M122password"
@@ -44,7 +45,8 @@ class ValidatePasswordSpecification extends Specification {
         then:
         !valid
     }
-    def "should be true with a password formatted according to rles"(){
+
+    def "should be true with a password formatted according to rules"(){
         given:
         def String password = "a2asfGfdfdf4"
 
@@ -54,4 +56,5 @@ class ValidatePasswordSpecification extends Specification {
         then:
         valid
     }
+
 }
