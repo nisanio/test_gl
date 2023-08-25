@@ -1,11 +1,11 @@
 package com.caballerosalas.gltest.errorhandling;
 
-public class CustomDataNotFoundException extends RuntimeException {
-    public CustomDataNotFoundException() {
+public class GLTestException extends RuntimeException {
+    public GLTestException() {
         super();
     }
 
-    public CustomDataNotFoundException(String message) {
+    public GLTestException(String message) {
         super(message);
     }
 }

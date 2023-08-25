@@ -1,6 +1,6 @@
 package com.caballerosalas.gltest.gluser;
 
-import com.caballerosalas.gltest.errorhandling.CustomDataNotFoundException;
+import com.caballerosalas.gltest.errorhandling.GLTestException;
 import com.caballerosalas.gltest.phone.Phone;
 import com.caballerosalas.gltest.phone.PhoneUtils;
 import com.caballerosalas.gltest.security.JwtTokenUtils;
@@ -38,14 +38,14 @@ public class GLUserUtils {
 
     public void validate(GLUserResponse user) {
         if (!EmailUtils.validateEmailFormat(user.getEmail())){
-            throw new CustomDataNotFoundException("Malformed Email");
+            throw new GLTestException("Malformed Email");
         }
         if(!PasswordUtils.validatePassword(user.getPassword())){
-            throw new CustomDataNotFoundException("Bad Password");
+            throw new GLTestException("Bad Password");
         }
         Optional<GLUser> userRequested = userRepository.findUserByEmail(user.getEmail());
         if (userRequested.isPresent()){
-            throw new CustomDataNotFoundException("User already created");
+            throw new GLTestException("User already created");
         }
     }
 }

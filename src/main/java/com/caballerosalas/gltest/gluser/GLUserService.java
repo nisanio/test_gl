@@ -1,6 +1,6 @@
 package com.caballerosalas.gltest.gluser;
 
-import com.caballerosalas.gltest.errorhandling.CustomDataNotFoundException;
+import com.caballerosalas.gltest.errorhandling.GLTestException;
 import com.caballerosalas.gltest.phone.Phone;
 import com.caballerosalas.gltest.phone.PhoneRepository;
 import com.caballerosalas.gltest.phone.PhoneService;
@@ -50,10 +50,10 @@ public  class GLUserService {
 
         Optional<GLUser> userRequested = userRepository.findUserByEmail(email);
         if (!userRequested.isPresent()){
-            throw new CustomDataNotFoundException("User not found");
+            throw new GLTestException("User not found");
         }
         if (!jwtUtil.validateAccessToken(token)){
-            throw new CustomDataNotFoundException("Token Invalid");
+            throw new GLTestException("Token Invalid");
         }
 
         Optional<List<Phone>> phones = phoneRepository.findPhonesByUserId(userRequested.get().getId());
