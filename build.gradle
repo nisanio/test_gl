@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.14'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'groovy'
 }
 
 group = 'com.caballerosalas'
@@ -30,6 +31,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.6'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+	testImplementation 'org.codehaus.groovy:groovy-all:3.0.8'
 
 }
 
