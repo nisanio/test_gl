@@ -1,14 +1,11 @@
 package com.caballerosalas.gltest.phone;
 
-import java.util.UUID;
 
 public class PhoneResponse {
-//    private UUID phoneId;
-    private long number;
-    private String citycode;
-    private String countrycode;
 
-//    private UUID userId;
+    private long number;
+    private int citycode;
+    private String countrycode;
 
     public PhoneResponse() {
     }
@@ -21,11 +18,11 @@ public class PhoneResponse {
         this.number = number;
     }
 
-    public String getCitycode() {
+    public int getCitycode() {
         return citycode;
     }
 
-    public void setCitycode(String citycode) {
+    public void setCitycode(int citycode) {
         this.citycode = citycode;
     }
 

@@ -43,8 +43,6 @@ public class GLUserController {
 
     @PostMapping(path = "api/sign-up")
     public GLUserResponse registerNewUser(@RequestBody GLUserResponse user) {
-
         return userService.addNewUser(user);
-
     }
 }

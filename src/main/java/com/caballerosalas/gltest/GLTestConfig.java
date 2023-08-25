@@ -42,9 +42,9 @@ public class GLTestConfig {
             Optional<GLUser> refresh_paloma = userRepository.findUserByEmail("paloma@gmail.com");
             if (refresh_paloma.isPresent()){
                 List<Phone> phones = Arrays.asList(
-                        new Phone( 123654, "01", "02", refresh_paloma.get()),
-                        new Phone(654123, "03", "04", refresh_paloma.get()),
-                        new Phone(987465, "05", "06", refresh_paloma.get())
+                        new Phone( 123654, 1, "02", refresh_paloma.get()),
+                        new Phone(654123, 3, "04", refresh_paloma.get()),
+                        new Phone(987465, 5, "06", refresh_paloma.get())
                 );
                 phoneRepository.saveAll(phones);
             }

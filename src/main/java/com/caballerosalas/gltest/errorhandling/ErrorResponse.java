@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class ErrorResponse {
-    // customizing timestamp serialization format
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private Date timestamp;
 

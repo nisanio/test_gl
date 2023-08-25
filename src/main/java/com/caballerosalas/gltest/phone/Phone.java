@@ -23,7 +23,7 @@ public class Phone {
     @Type(type = "uuid-char")
     private UUID id;
     private long number;
-    private String citycode;
+    private int citycode;
     private String countrycode;
 
     @ManyToOne
@@ -34,14 +34,14 @@ public class Phone {
 
     }
 
-    public Phone(UUID id, long number, String citycode, String countrycode) {
+    public Phone(UUID id, long number, int citycode, String countrycode) {
         this.id = id;
         this.number = number;
         this.citycode = citycode;
         this.countrycode = countrycode;
     }
 
-    public Phone(long number, String citycode, String countrycode, GLUser user) {
+    public Phone(long number, int citycode, String countrycode, GLUser user) {
         this.number = number;
         this.citycode = citycode;
         this.countrycode = countrycode;
@@ -64,11 +64,11 @@ public class Phone {
         this.number = number;
     }
 
-    public String getCitycode() {
+    public int getCitycode() {
         return citycode;
     }
 
-    public void setCitycode(String citycode) {
+    public void setCitycode(int citycode) {
         this.citycode = citycode;
     }
 

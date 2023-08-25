@@ -66,19 +66,9 @@ public  class GLUserService {
     }
 
     public GLUserResponse addNewUser(GLUserResponse user){
-        if (!EmailUtils.validateEmailFormat(user.getEmail())){
-            throw new CustomDataNotFoundException("Malformed Email");
-        }
-        if(!PasswordUtils.validatePassword(user.getPassword())){
-            throw new CustomDataNotFoundException("Bad Password");
-        }
-        Optional<GLUser> userRequested = userRepository.findUserByEmail(user.getEmail());
-        if (userRequested.isPresent()){
-            throw new CustomDataNotFoundException("User already created");
-        }
-
         List<Phone> newPhones = Collections.emptyList(); // ?
 
+        userUtils.validate(user);
 
         GLUser newUser = userRepository.save(user.toGLUser());
         List<Phone> phoneList = user.toPhoneList();
@@ -90,8 +80,9 @@ public  class GLUserService {
             newPhones = phoneRepository.saveAll(phoneList);
         }
 
-
         return userUtils.buildUserResponse(newUser, newPhones);
     }
+
+
 }
 

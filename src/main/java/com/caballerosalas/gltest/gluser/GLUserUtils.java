@@ -1,5 +1,6 @@
 package com.caballerosalas.gltest.gluser;
 
+import com.caballerosalas.gltest.errorhandling.CustomDataNotFoundException;
 import com.caballerosalas.gltest.phone.Phone;
 import com.caballerosalas.gltest.phone.PhoneUtils;
 import com.caballerosalas.gltest.security.JwtTokenUtils;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class GLUserUtils {
@@ -16,6 +18,9 @@ public class GLUserUtils {
 
     @Autowired
     PhoneUtils phoneUtils;
+
+    @Autowired
+    GLUserRepository userRepository;
 
     public GLUserResponse buildUserResponse(GLUser user, List<Phone> phones){
         GLUserResponse userResponse = new GLUserResponse();
@@ -29,5 +34,18 @@ public class GLUserUtils {
         userResponse.setActive(user.isAccountNonExpired());
         userResponse.setPhones(phoneUtils.buildPhoneResponseList(phones));
         return userResponse;
+    }
+
+    public void validate(GLUserResponse user) {
+        if (!EmailUtils.validateEmailFormat(user.getEmail())){
+            throw new CustomDataNotFoundException("Malformed Email");
+        }
+        if(!PasswordUtils.validatePassword(user.getPassword())){
+            throw new CustomDataNotFoundException("Bad Password");
+        }
+        Optional<GLUser> userRequested = userRepository.findUserByEmail(user.getEmail());
+        if (userRequested.isPresent()){
+            throw new CustomDataNotFoundException("User already created");
+        }
     }
 }
