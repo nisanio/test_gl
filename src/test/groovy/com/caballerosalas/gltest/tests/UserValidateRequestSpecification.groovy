@@ -12,8 +12,6 @@ import spock.lang.Specification
 @SpringBootTest
 class UserValidateRequestSpecification extends Specification {
 
-//    @SpringBean
-//    GLUserRepository userRepository = Stub()
 
     def "should thrown GLTestException with short password"(){
         given:
@@ -78,40 +76,5 @@ class UserValidateRequestSpecification extends Specification {
         then:
         thrown(GLTestException)
     }
-// having trouble with
-//    def "should not thrown GLTestException with password according to rules"(){
-//        given:
-//        def utils = new GLUserUtils()
-//        def user = new GLUserResponse()
-//        user.setName("alejandro")
-//        user.setEmail("caballerosalas@gmail.com")
-//        user.setPassword("a2asfGfdfdf4")
-//
-//
-//        when:
-//        utils.validate(user)
-//
-//        then:
-//        noExceptionThrown()
-//    }
-
-//    def "should not thrown GLTestException with no name"(){
-//        given:
-//            def utils = new GLUserUtils()
-//            def user = new GLUserResponse()
-//            Optional<GLUser> optionalGLUser = GroovyMock(Optional<GLUser>)
-//            optionalGLUser.isPresent() >> true
-//            userRepository.findUserByEmail(_ as String) >> optionalGLUser
-//            GLUserRepository userRepository = Stub()
-//            user.setEmail("caballerosalas@gmail.com")
-//            user.setPassword("a2asfGfdfdf4")
-//
-//
-//        when:
-//            utils.validate(user)
-//
-//        then:
-//            noExceptionThrown()
-//    }
 
 }

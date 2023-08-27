@@ -25,3 +25,4 @@ replay_pid*
 .gradle
 build
 src/test/groovy/com/caballerosalas/gltest/.DS_Store
+\.DS_Store
