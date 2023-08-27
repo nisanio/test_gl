@@ -43,7 +43,7 @@ class RestIntegrationApplicationTest extends  Specification {
 
         then:
         response.status == 200
-        responsePost.status == 200
+        responsePost.status == 201
         response.responseData.name == null
         response.responseData.email == "caballerosalas@gmail.com"
 

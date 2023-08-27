@@ -42,7 +42,8 @@ public class GLUserController {
     }
 
     @PostMapping(path = "api/sign-up")
-    public GLUserResponse registerNewUser(@RequestBody GLUserResponse user) {
-        return userService.addNewUser(user);
+    public ResponseEntity<GLUserResponse>  registerNewUser(@RequestBody GLUserResponse user) {
+        GLUserResponse userResponse = userService.addNewUser(user);
+        return new ResponseEntity<GLUserResponse>(userResponse, HttpStatus.CREATED);
     }
 }
