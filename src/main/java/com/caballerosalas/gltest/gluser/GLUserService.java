@@ -19,8 +19,6 @@ public  class GLUserService {
     private final GLUserRepository userRepository;
     private final PhoneRepository phoneRepository;
 
-
-
     @Autowired
     JwtTokenUtils jwtUtil;
 
@@ -56,7 +54,7 @@ public  class GLUserService {
             throw new GLTestException("Token Invalid");
         }
 
-        Optional<List<Phone>> phones = phoneRepository.findPhonesByUserId(userRequested.get().getId());
+        Optional<List<Phone>> phones = Optional.ofNullable(phoneService.getPhones(userRequested.get()));
         List<Phone> phoneList = Collections.emptyList();
         if (phones.isPresent()){
             phoneList = phones.get();
