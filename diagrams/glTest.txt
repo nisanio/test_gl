@@ -1,0 +1,18 @@
+GLTest Sequence Diagram
+
+Actor->GLUserController:Post Sign-up Request with User Payload
+GLUserController->GLUserService: Add User
+GLUserService->GLUserRepository: Write User with data given
+GLUserRepository->GLUserService:User Data just Saved or Error
+GLUserService->PhoneService:Get Phones
+PhoneService->PhoneRepository: Get Phones
+PhoneRepository->PhoneService:Phones if they exists
+PhoneService->GLUserService:Phones if they exists
+GLUserService->GLUserController: User info with phones
+
+Actor->GLUserController:Get login with email and token
+GLUserController->Security:Ask if operation is available with token
+Security->GLUserController: Authorization if token is correct
+GLUserController->GLUserService:Get User (after token authorization)
+
+
